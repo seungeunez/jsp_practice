@@ -1,0 +1,357 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;  /*마진값 초기화*/
+    padding: 0; /*패딩값 초기화*/
+    box-sizing: border-box; /*박스 영역은 테두리까지 지정*/
+}
+
+a{
+    text-decoration: none; /*텍스트 링크의 밑줄을 감춤*/
+}
+
+ul{
+    list-style: none; /*불릿 기호를 보이지 않게 함*/
+}
+
+#container{
+    margin: 0 auto; /*화면 중앙에 배치*/
+    width: 1200px;  /*너비 지정*/
+}
+
+/*********************************/
+/* 헤더 영역 - 로고 & 내비게이션 */
+/*********************************/
+header{
+    width: 100%;
+    height: 100px;
+    background-color: #07c;
+}
+
+/*로고 영역*/
+#logo{
+    float: left;
+    width: 250px;
+    height: 100px;
+    line-height: 100px; /*중앙에 배치하기 위해서 height와 맞춤*/
+    padding-left: 20px;
+}
+
+#logo h1{
+    font-family: 'Merienda', cursive;
+    font-weight: 700;
+    font-size: 40px;
+    color: white;
+    text-shadow: 0 -1px 0 #222;
+}
+
+/*내비게이션 영역*/
+nav{   
+    float: right;
+    width: 900px;
+    height: 100px;
+    padding-top: 40px;
+}
+
+#topMenu{
+    height: 60px;
+}
+
+#topMenu > li{
+    float: left;
+    position: relative; /*서브메뉴를 absolute로 만들기 위해 부모 요소를 relative로 지정*/
+}
+
+#topMenu > li > a{
+    display: block;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 1px #07c;
+    padding: 20px 60px;
+}
+
+#topMenu > li > a:hover{
+    color: black;
+    text-shadow: 0 -1px #07c;
+}
+
+#topMenu > li > a > span{
+    font-size : 0.5em;
+}
+
+#topMenu > li > ul{
+    display: none; /*서브메뉴를 처음에는 감춤*/
+    position: absolute; /*서브메뉴 포지셔닝*/
+    width: 160px;
+    background-color: rgba(225, 255, 255, 0.6);
+    left: 20px;
+    margin: 0;
+}
+
+
+#topMenu > li > ul > li{
+    padding: 10px 10px 10px 30px; /*서브메뉴 항목 지정*/
+}
+
+#topMenu > li > ul > li > a{
+    font-size: 14px;
+    padding: 10px;
+    color: black;
+}
+
+#topMenu > li:hover > ul{ /*메인 메뉴 항목에 갖다대면 서브 메뉴 나오게 해줌 */
+    display: block; /*메인 메뉴 항목 위로 오버?하면 서브메뉴 표시*/ 
+    z-index: 10;
+}
+
+#topMenu > li > ul > li > a:hover{
+    color: red;
+}
+
+/*헤더 영역 끝*/
+
+
+
+/***************************/
+/* 이미지 슬라이드 쇼 영역 */
+/***************************/
+
+#slideShow{
+    clear: both; /*플로팅 해제*/
+    width: 100%;
+    height: 300px;
+    overflow: hidden; /*영역 넘치면 감춤*/
+    position: relative;
+}
+
+#slides{
+    position: absolute;
+}
+
+#slides > img{
+    width: 100%;
+    float: left;
+}
+
+
+/*슬라이드 쇼 버튼 (양쪽)*/
+button{
+    position: absolute;
+    height: 100%; /*이미지 높이에 맞추기*/
+    top: 0;
+    border: none; /*테두리 없이*/
+    padding: 20px;
+    background-color: transparent; /*투명한 배경 지정*/
+    color: black;   /*화살표를 검은색으로 지정*/
+    font-weight: 800;   /*화살표를 굵게 지정*/
+    font-size: 24px;    /*화살표 크기 지정*/
+    opacity: 0.5;   /*화살표를 반투명하게 지정*/
+}
+
+
+#prev{ /*왼쪽 버튼*/
+    left: 0; /*왼쪽으로 붙이기*/
+}
+
+#next{ /*오른쪽 버튼*/
+    right: 0; /*오른쪽으로 붙이기*/
+}
+
+button:hover{
+    background-color: #222;
+    color: white;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+button:focus{
+    outline: 0; /*아웃라인 없앰*/
+}
+
+/*이미지 슬라이드 쇼 영역 끝*/
+
+
+
+/************************************************************/
+/* 컨텐츠 영역 - 탭 메뉴( 공지사항 & 갤러리) & 퀵 링크 영역 */
+/************************************************************/
+
+#contents{
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+
+/*탭 메뉴 영역*/
+#tabMenu{
+    float: left;
+    width: 600px;
+    height: 100%;
+    margin-top: 10px;
+}
+
+#tabMenu input[type ="radio"]{
+    display: none; /*라디오 버튼 감춤*/
+}
+
+#tabMenu label{ /*탭 제목 스타일 지정하는 곳*/
+    display: inline-block; /*탭을 가로로 배치*/
+    margin: 0 0;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center; /*폰트 정렬*/
+    color: #aaa;
+    border: 1px solid transparent; /*테두리 스타일 transparent(투명)*/
+}
+
+#tabMenu label:hover{
+    color: #222;
+    cursor: pointer;
+}
+
+#tabMenu input:checked + label { /*활성화 된 탭 제목 스타일 지정*/
+    color: red;
+    border: 1px solid #ddd;
+    background-color: #eee;
+}
+
+.tabContent{ /*탭 내용 스타일*/
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;
+}
+
+.tabContent h2{
+    display: none;
+}
+
+/*공지사항 내용*/
+#notice ul{
+    list-style: disc;
+    margin-left: 30px;
+}
+
+#notice ul li {
+    font-size: 16px;
+    line-height: 2.5;
+}
+
+/*갤러리 내용*/
+#gallery ul li {
+    display: inline; /*이미지 가로로 배치*/
+}
+
+#tab1:checked ~ #notice,
+#tab2:checked ~ #gallery {
+    display: block;
+}
+
+
+/* 퀵 링크 영역  */
+#links{
+    float: right;
+    width: 600px;
+    height: 100%;
+    margin-top: 15px;
+}
+
+#links ul{
+    padding: 0;
+    overflow: hidden; /*넘치는 항목은 감춤*/
+}
+
+#links ul li {
+    float: left; /*가로로 배치*/
+    width: 33%; /*세 항목의 영역을 균일하게 지정*/
+    text-align: center; /*가운데 정렬*/
+    margin: 10px 0;
+}
+
+#links ul li a span{
+    display: block;
+    margin: 0 auto; /*가운데 배치*/
+    width: 150px;
+    height: 150px;
+    border-radius: 100%; /*테두리 둥글게 지정 border-radius: 150px도 가능*/
+    border: 1px solid #ddd; /*테두리 스타일*/
+    line-height: 150px; /*수직으로 중간에 오게*/
+}
+
+#quick-icon1 {
+    background-image: url('../images/jeju/icon-1.jpg');
+}
+
+#quick-icon2 {
+    background-image: url('../images/jeju/icon-2.jpg');
+}
+
+#quick-icon3 {
+    background-image: url('../images/jeju/icon-3.jpg');
+}
+
+#links ul li a p{
+    margin-top: 15px;
+    font-weight: 600;
+    color: #666;
+}
+
+/*컨텐츠 영역 끝*/
+
+/******************************************/
+/* 하단 영역 - 하단 메뉴 & sns & 회사주소 */
+/******************************************/
+footer{
+    width: 100%;
+    height: 100px;
+    border-top: 2px solid #222; /*위쪽에 가로선 추가*/
+}
+
+#bottomMenu{
+    width: 100%;
+    height: 20px;
+    position: relative;
+}
+
+#bottomMenu ul{
+    margin-top: 15px;
+}
+
+#bottomMenu ul li{
+    float: left; /*가로로 배치*/
+    padding: 5px 20px;
+    border-right: 1px solid #ddd; /*항목 오른쪽에 세로선 추가*/
+}
+
+#bottomMenu ul li:last-child{
+    border-right: none; /*마지막 항목에는 오른쪽 세로선 없음*/
+}
+
+#bottomMenu ul li a, #bottomMenu ul li a:visited{
+    font-size: 15px;
+    color: #666;
+}
+
+#sns{
+    position: absolute;
+    right: 0; /*오른쪽 끝에 배치*/
+}
+
+#sns ul li {
+    border: none; /*세로선 없앰*/
+    padding: 5px;
+}
+
+#company {
+    clear: left; /*플로팅 해제 clear: both도 가능*/
+    margin-top: 25px;
+    margin-left: 20px;
+}
+
+p{
+    font-size: 14px;
+    color: #aaa;
+}
+
+/*하단영역 끝*/

@@ -1,0 +1,57 @@
+package mainController.customer;
+
+import java.io.IOException;
+
+import config.MyBatisContext;
+import dto.Purchase;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import mapper.ItemImageMapper;
+import mapper.PurchaseMapper;
+
+@WebServlet(urlPatterns= {"/customer/purchase.do"})
+public class CustomerPurchaseController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//DB에 추가하기
+		Long itemno = Long.parseLong(request.getParameter("itemno"));
+		Long cnt = Long.parseLong(request.getParameter("cnt"));
+		String id = (String) request.getSession().getAttribute("id");
+		
+		Purchase obj = new Purchase();
+		obj.setItemno(itemno);
+		obj.setCnt(cnt);
+		obj.setCustomerid(id);
+		
+		int ret = MyBatisContext.getSqlSession().getMapper(PurchaseMapper.class).insertPurchaseOne(obj);
+		
+		if(ret == 1) {
+			response.sendRedirect("mypage.do?menu=4");
+			return;
+		}
+		
+		response.sendRedirect("product.do?itemno="+itemno);
+		
+
+		
+	}
+	
+	
+	
+
+
+	
+	
+	
+}
